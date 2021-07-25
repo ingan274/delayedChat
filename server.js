@@ -21,10 +21,12 @@ app.use(router);
 if (process.env.NODE_ENV === 'production') {
     // console.log('YOU ARE IN THE PRODUCTION ENV');
     // app.use('/static', express.static(path.join(__dirname, '../client/build')));
-    app.use(express.static(path.join(__dirname, './client/build')))
-    app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, './client/build/index.html'))
-    })
+    // app.use(express.static(path.join(__dirname, './client/build')))
+    // app.get('/', (req, res) => {
+    //     res.sendFile(path.join(__dirname, './client/build/index.html'))
+    // })
+
+    app.use('/static', express.static(path.join(__dirname, 'client/build')));
 }
 // // Start the API server
 app.listen(PORT, function () {
