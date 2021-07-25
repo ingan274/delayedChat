@@ -26,7 +26,11 @@ if (process.env.NODE_ENV === 'production') {
     //     res.sendFile(path.join(__dirname, './client/build/index.html'))
     // })
 
-    app.use('/static', express.static(path.join(__dirname, 'client/build')));
+    const root = require('path').join(__dirname, 'client', 'build')
+    app.use(express.static(root));
+    app.get("*", (req, res) => {
+        res.sendFile('index.html', { root });
+    })
 }
 // // Start the API server
 app.listen(PORT, function () {
