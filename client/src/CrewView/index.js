@@ -1,6 +1,6 @@
 import "./style.css";
 import React, { Component } from "react";
-import { Grid, Box, IconButton, TextField, FormControlLabel, Switch } from '@material-ui/core';
+import { Grid, Box, IconButton, TextField } from '@material-ui/core';
 import { SendRounded } from '@material-ui/icons';
 import dateTime from "../API-Calls/chatDelay"
 import API from "../API-Calls";

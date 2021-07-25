@@ -1,6 +1,6 @@
 import "./style.css";
 import React, { Component } from "react";
-import { Grid, Box, IconButton, TextField, FormControlLabel, Switch } from '@material-ui/core';
+import { Grid, Box, IconButton, TextField } from '@material-ui/core';
 import { SendRounded } from '@material-ui/icons';
 import dateTime from "../API-Calls/chatDelay"
 import API from "../API-Calls";
@@ -26,7 +26,8 @@ class Playbook extends Component {
             userName: userObject.name,
             userId: userObject.id,
             userLocation: userObject.location,
-            chat: [],
+            chatSent: [],
+            chatSending: [],
             messageBody: "",
             priority: false,
             nextDeliveryTime: "",
@@ -47,16 +48,16 @@ class Playbook extends Component {
             this.getMessages();
         }, 1000);
 
-        // // Scroll To Red Line
-        // let cycle = 1
-        // let scrollDown = setInterval(() => {
+        // Scroll To Red Line
+        let cycle = 1
+        let scrollDown = setInterval(() => {
 
-        //     if (cycle === 0) {
-        //         clearInterval(scrollDown)
-        //     }
-        //     this.scrollToLine();
-        //     cycle--
-        // }, 1000);
+            if (cycle === 0) {
+                clearInterval(scrollDown)
+            }
+            this.scrollToLine();
+            cycle--
+        }, 1000);
 
 
         // Update time every second
@@ -83,7 +84,14 @@ class Playbook extends Component {
     getMessages = () => {
         API.getMCCCrew(this.state.userLocation).then((res) => {
             this.setState({
-                chat: res.data
+                chatSending: res.data
+            })
+        })
+
+        API.getMCCCrewSent().then((res) => {
+            console.log(res.data)
+            this.setState({
+                chatSent: res.data
             })
         })
 
@@ -106,7 +114,7 @@ class Playbook extends Component {
     handleSubmitMessage = event => {
         if (this.state.messageBody) {
 
-           const newMesssage = {
+            const newMesssage = {
                 message: {
                     messageBody: this.state.messageBody
                 },
@@ -125,16 +133,19 @@ class Playbook extends Component {
             })
 
             this.getMessages();
+
         }
     }
 
 
-    // scrollToLine = () => {
-    //     // Scroll to the bottom
-    //     document.getElementById('redLine').scrollIntoView({
-    //         behavior: 'smooth'
-    //     });
-    // }
+    scrollToLine = () => {
+        // Scroll to the bottom
+        // let sent = document.getElementById('sentBox');
+        // let line = ;
+        // line.scrollTop = sent.scrollHeight - sent.clientHeight / 3;
+
+        document.getElementById('redline').scrollIntoView({block: "center"})
+    }
 
     // GOOD
     markObsolete = (messageid, event) => {
@@ -160,87 +171,90 @@ class Playbook extends Component {
     }
 
     // Renderings
-    renderMessages = () => {
-
-        if (this.state.chat.length > 0) {
+    renderMessagesSent = () => {
+        let allMessages = this.state.chatSent.length
+        if (allMessages > 0) {
             return (
-                <Box className="ChatBox chatMessDiv" item="true">
-                    {this.state.chat.map((item, index) => {
-                        let nextIndex;
-
-                        if (this.state.chat.length === index + 1) {
-                            nextIndex = index
-                        } else {
-                            nextIndex = index + 1
-                        }
-                        // console.log("this message index", index)
-                        // console.log("Next message", this.state.chat[nextIndex].sending)
-                        // console.log("----------")
-                        if (!item.sending && this.state.chat[nextIndex].sending) {
-
-                            return (
-                                <Box className="HLineDiv">
-                                    <New
-                                        key={index.toString()}
-                                        messageID={item._id}
-                                        location={item.location}
-                                        sending={item.sending}
-                                        expresp={item.expected_resp}
-                                        messageSubject={item.message.subject}
-                                        messageMessageBody={item.message.messageBody}
-                                        userName={item.senderName}
-                                        userId={item.sender}
-                                        timeSent={this.getTime(item.timeSent)}
-                                        timeDelivered={this.getTime(item.timeDelivered)}
-                                        eta={item.timeDelivered}
-                                        markObsolete={(ev) => this.markObsolete(item._id, ev)}
-                                        obsolete={item.obsolete.isObsolete}
-                                        obsoletePress={item.obsoletePressed}
-                                        obsoleteUser={item.obsolete.userChange}
-                                        obsoleteTime={item.obsolete.timeChange}
-                                        priority={item.priority}
-                                    />
-                                    <Box className="hLine" id="redLine"> </Box>
-                                </Box>
-                            )
-
-                        } else {
-                            return (
-                                <New
-                                    key={index.toString()}
-                                    messageID={item._id}
-                                    location={item.location}
-                                    sending={item.sending}
-                                    expresp={item.expected_resp}
-                                    messageSubject={item.message.subject}
-                                    messageMessageBody={item.message.messageBody}
-                                    userName={item.senderName}
-                                    userId={item.sender}
-                                    timeSent={this.getTime(item.timeSent)}
-                                    timeDelivered={this.getTime(item.timeDelivered)}
-                                    eta={item.timeDelivered}
-                                    markObsolete={(ev) => this.markObsolete(item._id, ev)}
-                                    obsolete={item.obsolete.isObsolete}
-                                    obsoletePress={item.obsoletePressed}
-                                    obsoleteUser={item.obsolete.userChange}
-                                    obsoleteTime={item.obsolete.timeChange}
-                                    priority={item.priority}
-                                />
-                            )
-                        }
+                <Box className="ChatBox chatMessDivSent" id="sentBox" item="true">
+                    {this.state.chatSent.map((item, index) => {
+                        return (
+                            <New
+                                key={index.toString()}
+                                messageID={item._id}
+                                location={item.location}
+                                sending={item.sending}
+                                expresp={item.expected_resp}
+                                messageSubject={item.message.subject}
+                                messageMessageBody={item.message.messageBody}
+                                userName={item.senderName}
+                                userId={item.sender}
+                                timeSent={this.getTime(item.timeSent)}
+                                timeDelivered={this.getTime(item.timeDelivered)}
+                                eta={item.timeDelivered}
+                                markObsolete={(ev) => this.markObsolete(item._id, ev)}
+                                obsolete={item.obsolete.isObsolete}
+                                obsoletePress={item.obsoletePressed}
+                                obsoleteUser={item.obsolete.userChange}
+                                obsoleteTime={item.obsolete.timeChange}
+                                priority={item.priority}
+                            />
+                        )
 
 
                     })}
                 </Box>
             )
+        } else {
+            return (
+                <Box className="ChatBox chatMessDivSent" item="true"></Box>
+            )
+
+        }
+    }
+
+    renderMessagesSending = () => {
+        let allMessages = this.state.chatSending.length
+        if (allMessages > 0) {
+            return (
+                <Box className="ChatBox chatMessDivSending" item="true">
+                    {this.state.chatSending.map((item, index) => {
+
+                        return (
+                            <New
+                                key={index.toString()}
+                                messageID={item._id}
+                                location={item.location}
+                                sending={item.sending}
+                                expresp={item.expected_resp}
+                                messageSubject={item.message.subject}
+                                messageMessageBody={item.message.messageBody}
+                                userName={item.senderName}
+                                userId={item.sender}
+                                timeSent={this.getTime(item.timeSent)}
+                                timeDelivered={this.getTime(item.timeDelivered)}
+                                eta={item.timeDelivered}
+                                markObsolete={(ev) => this.markObsolete(item._id, ev)}
+                                obsolete={item.obsolete.isObsolete}
+                                obsoletePress={item.obsoletePressed}
+                                obsoleteUser={item.obsolete.userChange}
+                                obsoleteTime={item.obsolete.timeChange}
+                                priority={item.priority}
+                            />
+                        )
 
 
-        } 
+                    })}
+                </Box>
+            )
+        } else {
+            return (
+                <Box className="ChatBox chatMessDivSending" item="true"></Box>
+            )
+        }
     }
 
 
     render = () => {
-
         return (
             <Grid
                 container
@@ -254,31 +268,18 @@ class Playbook extends Component {
 
                 <Box className="chatContainer">
                     <Box className="timelineLineDiv"><Box className="timelineLine"></Box></Box>
-                    {this.renderMessages()}
-
+                    {this.renderMessagesSent()}
+                    <Box className="hLine" id='redline'></Box>
+                    {this.renderMessagesSending()}
                     <Box className="chatBoxInput">
                         <form encType="multipart/form-data">
                             <Grid
-                                style={{padding: ".75em"}}
+                                style={{ padding: ".75em" }}
                                 container item
                                 direction="column"
                                 justify="center"
                                 alignItems="center">
                                 <Box item="true" className="form-control">
-                                    <Box mb={1} item="true">
-                                        <FormControlLabel
-                                            control={
-                                                <Switch
-                                                    size="small"
-                                                    checked={this.state.priority}
-                                                    onChange={this.handlePriority}
-                                                    name="priority"
-                                                    color="primary"
-                                                />
-                                            }
-                                            label="Priority Message"
-                                        />
-                                    </Box>
                                     <Grid
                                         container item
                                         direction="row"
