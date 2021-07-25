@@ -2,8 +2,6 @@
 const databasecalls = require('./dbconnection')
 
 let mcccrew;
-let crew;
-let drafts;
 
 module.exports = {
     database: (client) => {

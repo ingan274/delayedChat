@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
-import { Grid, Box } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 
