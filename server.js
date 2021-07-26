@@ -60,22 +60,22 @@ app.use(router);
 
 // If its production environment!
 if (process.env.NODE_ENV === 'production') {
-    console.log('YOU ARE IN THE PRODUCTION ENV');
-    app.use('/static', express.static(path.join(__dirname, '../client/build')));
-    // app.use(express.static(path.join(__dirname, './client/build')))
-    // app.get('/', (req, res) => {
-    //     res.sendFile(path.join(__dirname, './client/build/index.html'))
+  console.log('YOU ARE IN THE PRODUCTION ENV');
+  // app.use('/static', express.static(path.join(__dirname, '../client/build/index.js')));
+  // app.use(express.static(path.join(__dirname, './client/build')))
+  // app.get('/', (req, res) => {
+  //   res.sendFile(path.join(__dirname, './client/build/index.html'))
 
-//     const root = require('path').join(__dirname, 'client', 'build')
-//     app.use(express.static(root));
-//     app.get("*", (req, res) => {
-//         res.sendFile('index.html', { root });
-//     })
+  const root = require('path').join(__dirname, 'client', 'build')
+  app.use(express.static(root));
+  app.get("*", (req, res) => {
+    res.sendFile('index.html', { root });
+  })
 }
 
 // // Start the API server
 app.listen(PORT, function () {
-    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
 
 
