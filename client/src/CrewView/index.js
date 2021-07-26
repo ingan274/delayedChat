@@ -31,18 +31,19 @@ class Playbook extends Component {
 
     // getting data functions
     componentDidMount = async () => {
-        this.getMessages();
+        this.getMessagesSent();
+        this.getMessagesSending();
 
         let delay = dateTime.delay;
         // Get Messages every 1 seconds
         setInterval(() => {
-            this.getMessages();
+            this.getMessagesSent();
+            this.getMessagesSending();
         }, 1000);
 
         // Scroll To Red Line
         let cycle = 1
         let scrollDown = setInterval(() => {
-            // eslint-disable-next-line
             if (cycle === 0) {
                 clearInterval(scrollDown)
             }
@@ -72,20 +73,21 @@ class Playbook extends Component {
 
     }
 
-    getMessages = () => {
+    getMessagesSending = () => {
         API.getMCCCrew(this.state.userLocation).then((res) => {
             this.setState({
                 chatSending: res.data
             })
         })
+    }
 
+    getMessagesSent = () => {
         API.getMCCCrewSent().then((res) => {
             // console.log(res.data)
             this.setState({
                 chatSent: res.data
             })
         })
-
     }
 
     getTime = (time) => {
@@ -123,7 +125,7 @@ class Playbook extends Component {
                 messageBody: "",
             })
 
-            this.getMessages();
+            this.getMessagesSending();
 
         }
     }
@@ -155,7 +157,7 @@ class Playbook extends Component {
     }
     // GOOD
     keyPress = (ev) => {
-        
+
         if (ev.keyCode === 13) {
             ev.preventDefault();
             this.handleSubmitMessage()
@@ -204,12 +206,10 @@ class Playbook extends Component {
     }
 
     renderMessagesSending = () => {
-        console.log(this.state.chatSending)
         if (this.state.chatSending.length > 0) {
             return (
                 <Box className="ChatBox chatMessDivSending" item="true">
                     {this.state.chatSending.map((item, index) => {
-
                         return (
                             <New
                                 key={index.toString()}
@@ -232,8 +232,6 @@ class Playbook extends Component {
                                 priority={item.priority}
                             />
                         )
-
-
                     })}
                 </Box>
             )
