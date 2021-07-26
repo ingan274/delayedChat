@@ -61,15 +61,10 @@ app.use(router);
 // If its production environment!
 if (process.env.NODE_ENV === 'production') {
   console.log('YOU ARE IN THE PRODUCTION ENV');
-  // app.use('/static', express.static(path.join(__dirname, '../client/build/index.js')));
-  // app.use(express.static(path.join(__dirname, './client/build')))
-  // app.get('/', (req, res) => {
-  //   res.sendFile(path.join(__dirname, './client/build/index.html'))
-  const root = require('path').join(__dirname, 'client', 'build')
-  app.use(express.static(root));
-  app.get("/", (req, res) => {
-    res.sendFile('index.html', { root });
-  })
+  app.use(express.static(__dirname, 'build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 }
 
 // // Start the API server
