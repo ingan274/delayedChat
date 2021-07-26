@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./style.css";
 import { Grid, Box, Avatar, IconButton } from '@material-ui/core';
 import MessageStatus from "../mesageStatusIcons"
 import PriorityHighOutlinedIcon from '@material-ui/icons/Error';

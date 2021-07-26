@@ -1,32 +1,162 @@
-.userSelectDiv {
-    height: 100vh;
+@media only screen 
+and (min-device-width : 400px) 
+and (max-device-width : 1025px) { 
+    .chronosLogo {
+        width: 30vw;
+    }
+    
+    .chatEnterInputArea {
+        width: 50vw;
+    }
+
+    /* CHAT SCREEN */
+.timeHeader {
+    position: fixed;
+    background-color: white;
+    font-size: 14px;
+    font-weight: 700;
     width: 100vw;
+    height: 5vh;
+    z-index: 8;
 }
 
-.userLink {
-    text-decoration: none;
-    color: black;
+.timelineLine {
+    width: 8vw;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: #F6F7F8; 
 }
 
-.userContainer {
-    height: 5em;
-    width: 5em;
-    border-radius: 1em;
+.ChatBox {
+    margin: 0vh 1vw;
+    width: 98vw;
+}
+
+.otherMessage {
+    margin-right: 44vw;
+}
+
+.Message {
+    margin-left: 44vw;
+}
+
+.indivMessage {
+    margin-top: 1em;
+}
+
+.chatMessDivSending {
+    min-height: 280px;
+}
+
+/* Chat Bubble */
+
+.chatBubble {
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 3px 0px;
+    color: white;
+}
+
+.messageArea {
+    max-width: 40vw;
+}
+
+.hLine {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background-color: #E05252;
+    z-index: 10;
+}
+
+.centerDetails {
+    width: 10vw;
+    font-size: 9px;
     text-align: center;
-    padding: 3em;
-    margin: 3em;
-    background-size: cover;
 }
 
-.userContainer:hover {
-    font-weight: bold;
+
+/* Form Information */
+.inputArea {
+    width: 80vw;
 }
 
-.nameText{
-    font-size: 1.5em;
 }
 
-.roleText{
-    font-weight: 400;
-    color: grey;
+@media only screen 
+and (min-device-width : 300px) 
+and (max-device-width : 400px) {
+
+    .chronosLogo {
+        width: 40vw;
+    }
+    
+    .chatEnterInputArea {
+        width: 80vw;
+    }
+
+    /* CHAT SCREEN */
+    
+    .timelineLine {
+        width: 14vw;
+        height: 100vh;
+        margin: 0 auto;
+        background-color: #F6F7F8; 
+    }
+    
+    .ChatBox {
+        margin: 0vh .5vw;
+        width: 99vw;
+    }
+    
+    .otherMessage {
+        margin-right: 40.5vw;
+    }
+    
+    .Message {
+        margin-left: 40.5vw;
+    }
+    
+    .indivMessage {
+        margin-top: 1em;
+    }
+    
+    .chatMessDivSending {
+        min-height: 280px;
+    }
+    
+    /* Chat Bubble */
+    
+    .chatBubble {
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 3px 0px;
+        color: white;
+    }
+    
+    .messageArea {
+        max-width: 35vw;
+    }
+    
+    .hLine {
+        position: relative;
+        width: 100%;
+        height: 8px;
+        background-color: #E05252;
+        z-index: 10;
+    }
+    
+    .centerDetails {
+        width: 18vw;
+        font-size: 9px;
+        text-align: center;
+    }
+    
+    
+    /* Form Information */
+    .inputArea {
+        width: 80vw;
+    }
 }

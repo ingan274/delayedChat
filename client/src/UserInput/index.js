@@ -1,5 +1,5 @@
-import "./style.css";
 import React, { Component } from "react";
+import "./style.css";
 import { Grid, Box, Button, TextField } from '@material-ui/core';
 import logo from "../Assets/chronosLogo.png"
 import moment from "moment";
@@ -56,10 +56,10 @@ class Playbook extends Component {
                 justify="space-between"
                 alignItems="center"
                 style={{ height: "100vh" }}>
-                <Box item="true" style={{ width: "15vw", paddingTop: "2em" }}>
+                <Box item="true" className="chronosLogo" >
                     <img src={logo} style={{ width: "100%" }} alt="chronos logo"/>
                 </Box>
-                <Box item="true" style={{ width: "30vw" }}>
+                <Box item="true" className="chatEnterInputArea">
                     <Box style={{ margin: "1em 0em" }}>
                         Please Enter Your Full Name
                     </Box>

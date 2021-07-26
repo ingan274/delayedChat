@@ -1,4 +1,3 @@
-import "./style.css";
 import React, { Component } from "react";
 import { Grid, Box, IconButton, TextField } from '@material-ui/core';
 import { SendRounded } from '@material-ui/icons';
