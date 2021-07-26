@@ -10,9 +10,7 @@ class Playbook extends Component {
     constructor(props) {
         super(props);
 
-
         let userObj = JSON.parse(localStorage.getItem("User"));
-
         this.state = {
             userName: userObj.name,
             userId: userObj.id,
@@ -27,10 +25,7 @@ class Playbook extends Component {
             deliveryBSON: "",
             currentBSON: ""
         }
-    }
 
-    // getting data functions
-    componentDidMount = async () => {
         this.getMessagesSent();
         this.getMessagesSending();
 
@@ -42,13 +37,13 @@ class Playbook extends Component {
         }, 1000);
 
         // Scroll To Red Line
-        let cycle = 1
+        let scroll = 1
         let scrollDown = setInterval(() => {
-            if (cycle === 0) {
+            if (scroll === 0) {
                 clearInterval(scrollDown)
             }
             this.scrollToLine();
-            cycle--
+            scroll--
         }, 1000);
 
 
@@ -166,6 +161,7 @@ class Playbook extends Component {
 
     // Renderings
     renderMessagesSent = () => {
+        console.log(this.state.chatSent.length)
         if (this.state.chatSent.length > 0) {
             return (
                 <Box className="ChatBox chatMessDivSent" id="sentBox" item="true">

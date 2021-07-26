@@ -35,12 +35,8 @@ class Playbook extends Component {
             deliveryBSON: "",
             currentBSON: ""
         }
-    }
 
-    // getting data functions
-    componentDidMount = async () => {
         this.getMessages();
-
         let delay = dateTime.delay;
         // Get Messages every 1 seconds
         setInterval(() => {
@@ -77,7 +73,6 @@ class Playbook extends Component {
             })
 
         }, 1000);
-
     }
 
     getMessages = () => {
