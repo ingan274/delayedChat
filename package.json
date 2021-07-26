@@ -20,7 +20,10 @@
     "react-ui/node_modules"
   ],
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "client": "cd client && npm run start"
   },
   "author": "Isabel Ngan",
   "license": "ISC",
