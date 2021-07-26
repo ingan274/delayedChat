@@ -81,7 +81,7 @@ class Playbook extends Component {
         })
 
         API.getMCCCrewSent().then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({
                 chatSent: res.data
             })
