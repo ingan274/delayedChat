@@ -59,28 +59,19 @@ app.use(router);
 // app.use(express.static(path.join(__dirname, './client/public')));
 
 // // If its production environment!
-// if (process.env.NODE_ENV === 'production') {
-//     // console.log('YOU ARE IN THE PRODUCTION ENV');
-//     // app.use('/static', express.static(path.join(__dirname, '../client/build')));
-//     // app.use(express.static(path.join(__dirname, './client/build')))
-//     // app.get('/', (req, res) => {
-//     //     res.sendFile(path.join(__dirname, './client/build/index.html'))
-//     // })
+if (process.env.NODE_ENV === 'production') {
+    console.log('YOU ARE IN THE PRODUCTION ENV');
+    app.use('/static', express.static(path.join(__dirname, '../client/build')));
+    // app.use(express.static(path.join(__dirname, './client/build')))
+    // app.get('/', (req, res) => {
+    //     res.sendFile(path.join(__dirname, './client/build/index.html'))
+    })
 
 //     const root = require('path').join(__dirname, 'client', 'build')
 //     app.use(express.static(root));
 //     app.get("*", (req, res) => {
 //         res.sendFile('index.html', { root });
 //     })
-// }
-
-if (process.env.NODE_ENV === 'production') {
-    console.log('YOU ARE IN THE PRODUCTION ENV');
-    app.use(express.static(path.join(__dirname, 'build')));
-
-    app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build', 'index.html'));
-    });
 }
 
 // // Start the API server
