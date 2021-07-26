@@ -78,7 +78,6 @@ class Playbook extends Component {
 
     getMessagesSent = () => {
         API.getMCCCrewSent().then((res) => {
-            // console.log(res.data)
             this.setState({
                 chatSent: res.data
             })
@@ -161,7 +160,6 @@ class Playbook extends Component {
 
     // Renderings
     renderMessagesSent = () => {
-        console.log(this.state.chatSent.length)
         if (this.state.chatSent.length > 0) {
             return (
                 <Box className="ChatBox chatMessDivSent" id="sentBox" item="true">
