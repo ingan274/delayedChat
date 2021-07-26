@@ -75,9 +75,9 @@ app.use(router);
 
 if (process.env.NODE_ENV === 'production') {
     console.log('YOU ARE IN THE PRODUCTION ENV');
-    app.use(express.static(__dirname, './client/build'));
+    app.use(express.static(__dirname, 'build'));
     app.get('*', (req, res) => {
-      res.sendFile(path.join('build', 'index.html'));
+      res.sendFile(path.join(__dirname, 'build', 'index.html'));
     });
   }
 
