@@ -2,8 +2,8 @@ import "./style.css";
 import React, { Component } from "react";
 import { Grid, Box, IconButton, TextField } from '@material-ui/core';
 import { SendRounded } from '@material-ui/icons';
-import dateTime from "../API-Calls/chatDelay"
-import API from "../API-Calls";
+import dateTime from "../API-Calls/chatDelay.js"
+import API from "../API-Calls/index.js";
 import New from "../Components/New";
 import moment from "moment";
 
