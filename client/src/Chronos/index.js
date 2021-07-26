@@ -51,7 +51,7 @@ class Playbook extends Component {
         // Scroll To Red Line
         let cycle = 1
         let scrollDown = setInterval(() => {
-
+            // eslint-disable-next-line
             if (cycle === 0) {
                 clearInterval(scrollDown)
             }
@@ -144,7 +144,7 @@ class Playbook extends Component {
         // let line = ;
         // line.scrollTop = sent.scrollHeight - sent.clientHeight / 3;
 
-        document.getElementById('redline').scrollIntoView({block: "center"})
+        document.getElementById('redline').scrollIntoView({ block: "center" })
     }
 
     // GOOD
