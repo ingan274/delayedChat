@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import { Grid, Box, Avatar } from '@material-ui/core';
 import PriorityHighOutlinedIcon from '@material-ui/icons/PriorityHighOutlined';
-import YourSideMess from "../YoursideMessage"
+import YourSideMess from "../YoursideMessage";
 
 
 class New extends Component {
