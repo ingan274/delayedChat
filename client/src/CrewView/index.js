@@ -156,7 +156,8 @@ class Playbook extends Component {
     }
     // GOOD
     keyPress = (ev) => {
-        if (ev.keyCode == 13) {
+        
+        if (ev.keyCode === 13) {
             ev.preventDefault();
             this.handleSubmitMessage()
         }
