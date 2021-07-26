@@ -164,8 +164,7 @@ class Playbook extends Component {
 
     // Renderings
     renderMessagesSent = () => {
-        let allMessages = this.state.chatSent.length
-        if (allMessages > 0) {
+        if (this.state.chatSent.length > 0) {
             return (
                 <Box className="ChatBox chatMessDivSent" id="sentBox" item="true">
                     {this.state.chatSent.map((item, index) => {
@@ -205,8 +204,8 @@ class Playbook extends Component {
     }
 
     renderMessagesSending = () => {
-        let allMessages = this.state.chatSending.length
-        if (allMessages > 0) {
+        console.log(this.state.chatSending)
+        if (this.state.chatSending.length > 0) {
             return (
                 <Box className="ChatBox chatMessDivSending" item="true">
                     {this.state.chatSending.map((item, index) => {
