@@ -1,6 +1,6 @@
-// import './App.css';
+import './App.css';
 // import MCCView from "./Chronos";
-// import CrewView from "./CrewView";
+import CrewView from "./CrewView";
 import UserSelect from "./UserInput";
 import {
   BrowserRouter as Router,
@@ -17,9 +17,9 @@ function App() {
         <Route exact path="/">
           <UserSelect />
         </Route>
-        {/* <Route exact path="/crew">
+        <Route exact path="/crew">
           <CrewView />
-        </Route> */}
+        </Route>
         {/* <Route exact path="/chronos">
           <MCCView />
         </Route> */}
