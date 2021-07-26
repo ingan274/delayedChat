@@ -13,13 +13,6 @@ class New extends Component {
         }
     }
 
-    addPhoto = () => {
-        if (this.props.attachment) {
-            return <img src={this.props.attachmentSrc} alt="upload" className="messageImage" />
-        }
-    }
-
-
     handleObsolete = (messageID) => {
         this.props.markObsolete(messageID)
     }
