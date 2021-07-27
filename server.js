@@ -2,7 +2,7 @@ const router = require("./router");
 const express = require("express");
 const morgan = require('morgan');
 const cors = require("cors");
-const http = require("http");
+// const http = require("http");
 const path = require('path');
 
 
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(morgan('combined'));
 // // Add routes - this connects and activates API
-app.use(router);
+
 // app.use(express.static(path.join(__dirname, './client/public')));
 
 // If its production environment!
@@ -29,10 +29,10 @@ if (process.env.NODE_ENV === 'production') {
 // app.get("/", function(req, res) {
 // 	res.sendFile(__dirname + "/index.html");
 // });
-
-const server = http.Server(app);
+app.use(router);
+// const server = http.Server(app);
 // // Start the API server
-server.listen(PORT, function(res, err) {
+app.listen(PORT, function(res, err) {
 	console.log(`🌎  ==> Delayed Server now listening on PORT ${PORT}!`);
 
 	if (err) {
