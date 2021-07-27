@@ -1,19 +1,20 @@
 
 import axios from "axios";
 
-const url = "https://cmumhcinasaserver.herokuapp.com"
+// const url = "https://cmumhcinasaserver.herokuapp.com"
+// ${url}
 const APICall = {
     // MCC Crew Chat
-    getMCCCrew: (location) => axios.get(`${url}/api/mcccrew/${location}`),
+    getMCCCrew: (location) => axios.get(`/api/mcccrew/${location}`),
     
-    getMCCCrewSent: () => axios.get(`${url}/api/mcccrew`),
+    getMCCCrewSent: () => axios.get(`/api/mcccrew`),
 
     newMCCCrew: (newMessage) => {
-        axios.post(`${url}/api/mcccrew`, newMessage)
+        axios.post(`/api/mcccrew`, newMessage)
     },
 
     markObsolete: (ignoreMessage) => {
-        axios.put(`${url}/api/mcccrew/ignorepress`, { message: ignoreMessage })
+        axios.put(`/api/mcccrew/ignorepress`, { message: ignoreMessage })
     }
 }
 
