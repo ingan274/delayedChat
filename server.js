@@ -4,9 +4,6 @@ const morgan = require('morgan');
 const cors = require("cors");
 // const http = require("http");
 const path = require('path');
-
-
-
 const app = express();
 const PORT = process.env.PORT || 3002;
 
@@ -17,9 +14,6 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(morgan('combined'));
-// // Add routes - this connects and activates API
-
-// app.use(express.static(path.join(__dirname, './client/public')));
 
 // If its production environment!
 if (process.env.NODE_ENV === 'production') {

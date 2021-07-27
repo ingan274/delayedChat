@@ -1,5 +1,5 @@
 import './App.css';
-// import MCCView from "./Chronos";
+import MCCView from "./Chronos";
 import CrewView from "./CrewView";
 import UserSelect from "./UserInput";
 import {
@@ -20,9 +20,9 @@ function App() {
         <Route exact path="/crew">
           <CrewView />
         </Route>
-        {/* <Route exact path="/chronos">
+        <Route exact path="/chronos">
           <MCCView />
-        </Route> */}
+        </Route>
       </Switch>
     </Router>
 
