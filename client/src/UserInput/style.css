@@ -45,7 +45,8 @@ and (max-device-width : 1025px) {
 }
 
 .chatMessDivSending {
-    min-height: 280px;
+    min-height: 250px;
+    margin-bottom: 10vh;
 }
 
 /* Chat Bubble */
@@ -124,6 +125,7 @@ and (max-device-width : 400px) {
     
     .chatMessDivSending {
         min-height: 280px;
+        margin-bottom: 20vh;
     }
     
     /* Chat Bubble */
