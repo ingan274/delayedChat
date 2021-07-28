@@ -59,6 +59,18 @@ class New extends Component {
         }
     }
 
+    avatarLetters = () => {
+        let userName = this.props.userName;
+        let matches = userName.match(/\b(\w)/g);
+        let acronym = matches.join('');
+
+        if (acronym.length > 2) {
+            return acronym.slice(0, 2)
+        } else {
+            return acronym
+        }
+    }
+
     render = () => {
         let userObj = JSON.parse(localStorage.getItem("User"));
         let clientLocation = userObj.location
@@ -162,7 +174,7 @@ class New extends Component {
                                 <Box >Sent:</Box>
                                 <Box >{this.props.timeSent}</Box>
                             </Box>
-                            <Avatar item="true" alt={`${this.props.userId}`}  style={{ backgroundColor: `${this.messageColor()}`, margin: "0px auto"  }} className="avatar">TC</Avatar>
+                            <Avatar item="true" alt={`${this.props.userId}`}  style={{ backgroundColor: `${this.messageColor()}`, margin: "0px auto"  }} className="avatar">{this.avatarLetters()}</Avatar>
                             <Box item="true" className="timeDetails deliveryTime">
                                 <Box >Delivered:</Box>
                                 <Box >{this.props.timeDelivered}</Box>
