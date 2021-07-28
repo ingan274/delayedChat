@@ -156,7 +156,7 @@ class New extends Component {
                         alignItems="center">
 
                         <Box className="messageArea" item="true">
-                            <Grid item container direction="column" alignItems="flex-start">
+                            <Grid item container direction="column" alignItems="flex-end">
                                 <Box item="true" className="userNameRole">{this.props.userName}</Box>
 
                                 <Box item="true"
