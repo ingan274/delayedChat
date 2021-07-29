@@ -257,7 +257,7 @@ class Playbook extends Component {
                 alignItems="center"
             >
                 <Grid item container direction="row" className="timeHeader" alignItems="center" justify="center">
-                    <Box item="true" className="currentDT">Date: {this.state.currentDate} <Box className="centerSpaceTime" component="span" mr={5}> </Box> Current Time: {this.state.currentTime}</Box>
+                    <Box item="true" className="currentDT">Date: {this.state.currentDate} <Box className="centerSpaceTime" component="span" mr={5}> </Box> Current Time: {this.state.currentTime} UTC</Box>
                 </Grid>
 
                 <Box className="chatContainer">
